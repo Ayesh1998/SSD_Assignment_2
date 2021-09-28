@@ -33,3 +33,11 @@ $(document).ready(function(){
 
         }
     });
+
+    function stripQueryStringAndHashFromPath(url) {
+        return url.split("?")[0].split("#")[0];
+    }
+
+    var Upload = function (file) {
+        this.file = file;
+    };
