@@ -36,6 +36,16 @@ passport.use(
 
         }, (request, accessToken, refreshToken, profile, done) => {
 
+            //save data in session
+            user = {
+                "accesstoken": accessToken,
+                'googleID': profile.id,
+                'name': profile.displayName,
+                'pic_url': profile._json.picture,
+                'email': profile._json.email
+            }
+
+            done(null, user)
         }
     )
 )
