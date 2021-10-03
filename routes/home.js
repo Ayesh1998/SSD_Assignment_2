@@ -79,5 +79,5 @@ router.post('/uploadtheFile', function (req, res) {
     }
 })
 
-
+module.exports = router
 
