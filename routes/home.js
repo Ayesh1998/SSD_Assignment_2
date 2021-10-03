@@ -54,7 +54,20 @@ router.post('/uploadtheFile', function (req, res) {
             auth: oauth2Client
         });
 
+        //move file to google drive
 
+        let { name: filename, mimetype, data } = req.files.file_upload
+
+        const driveResponse = drive.files.create({
+            requestBody: {
+                name: filename,
+                mimeType: mimetype
+            },
+            media: {
+                mimeType: mimetype,
+                body: Buffer.from(data).toString()
+            }
+        });
 
         driveResponse.then(data => {
 
