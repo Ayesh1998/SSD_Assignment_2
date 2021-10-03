@@ -16,3 +16,18 @@ passport.serializeUser((user, done) => {
 
     done(null, sessionUser)
 })
+
+// get cookie** & get relevent session data from google **
+passport.deserializeUser((sessionUser, done) => {
+
+    done(null, sessionUser) // now can ***access request.user
+})
+
+
+passport.use(
+    // google login *************
+    new GoogleStrategy(
+        // google keys***************
+
+    )
+)
