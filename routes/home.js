@@ -36,3 +36,34 @@ router.get('/dashboard', function (req, res) {
 })
 
 
+router.post('/uploadtheFile', function (req, res) {
+
+    // not auth
+    if (!req.user) res.redirect('/auth/login/google')
+    else {
+        // auth user
+
+        // config google drive with client token
+        const oauth2Client = new google.auth.OAuth2()
+        oauth2Client.setCredentials({
+            'access_token': req.user.accessToken
+        });
+
+        const drive = google.drive({
+            version: 'v3',
+            auth: oauth2Client
+        });
+
+
+
+        driveResponse.then(data => {
+
+            if (data.status == 200) res.redirect('/dashboard?file=upload') // success
+            else res.redirect('/dashboard?file=notupload') // unsuccess
+
+        }).catch(err => { throw new Error(err) })
+    }
+})
+
+
+
