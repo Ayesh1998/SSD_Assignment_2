@@ -28,6 +28,14 @@ passport.use(
     // google login *************
     new GoogleStrategy(
         // google keys***************
+        {
+            clientID: KEYS.googleOauth.clientID,
+            clientSecret: KEYS.googleOauth.clientSecret,
+            callbackURL: KEYS.googleOauth.callback,
+            passReqToCallback: true
 
+        }, (request, accessToken, refreshToken, profile, done) => {
+
+        }
     )
 )
