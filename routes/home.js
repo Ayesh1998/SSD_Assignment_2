@@ -72,7 +72,8 @@ router.post('/uploadtheFile', function (req, res) {
         driveResponse.then(data => {
 
             if (data.status == 200) res.redirect('/dashboard?file=upload') // success
-            else res.redirect('/dashboard?file=notupload') // unsuccess
+
+             res.redirect('/dashboard?file=notupload') // unsuccess
 
         }).catch(err => { throw new Error(err) })
     }
