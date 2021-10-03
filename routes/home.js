@@ -10,4 +10,13 @@ router.get('/', function (req, res) {
 })
 
 router.get('/dashboard', function (req, res) {
+
+    let parseData = {
+        title: 'File Uploader',
+        googleid: req.user._id,
+        name: req.user.name,
+        avatar: req.user.pic_url,
+        email: req.user.email
+    }
+
 })
