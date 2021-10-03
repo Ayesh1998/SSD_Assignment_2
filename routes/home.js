@@ -18,5 +18,12 @@ router.get('/dashboard', function (req, res) {
         avatar: req.user.pic_url,
         email: req.user.email
     }
+    // redirect with google drive response will be
+    if (req.query.file !== undefined) {
+
+        // successfully upload the file
+        if (req.query.file == "upload") parseData.file = "uploaded"
+        else if (req.query.file == "notupload") parseData.file = "notuploaded"
+    }
 
 })
