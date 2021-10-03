@@ -15,3 +15,9 @@ router.get('/login', function (req, res) {
 router.get('/login/google', passport.authenticate("google", {
     scope: ['profile', "https://www.googleapis.com/auth/drive.file", "email"]
 }))
+
+// callback from google o auth (with the token)
+router.get('/google/redirect', passport.authenticate('google'), function (req, res) {
+
+    res.redirect('/dashboard')
+})
